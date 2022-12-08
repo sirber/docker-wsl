@@ -9,7 +9,7 @@ wrapper to allow the host to use docker inside wsl
 - add docker.exe to path
 
 ## start service
-- docker start
+- docker wslstart
 
 ## user docker
 - docker [command]
