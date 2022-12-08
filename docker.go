@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 )
@@ -13,18 +12,19 @@ func main() {
 	args := []string{"docker"}
 	args = append(args, os.Args[1:]...)
 
-	// Execute
+	// Command
 	cmd := exec.Command("wsl", args...)
 
+	// Buffers
 	var out bytes.Buffer
+	var outError bytes.Buffer
 	cmd.Stdout = &out
+	cmd.Stderr = &outError
 
-	err := cmd.Run()
+	// Execute
+	cmd.Run()
 
-	// Results
-	if err != nil {
-		log.Fatal(err)
-	}
-
+	// Console oupout
+	fmt.Print(outError.String())
 	fmt.Print(out.String())
 }
