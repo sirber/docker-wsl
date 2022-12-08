@@ -16,7 +16,8 @@ func main() {
 
 	switch firstArg {
 	case "wslstart":
-		exec.Command("wsl", "sudo", "service", "docker", "start")
+		cmd := exec.Command("wsl", "sudo", "service", "docker", "start")
+		cmd.Run()
 		break
 
 	default:
