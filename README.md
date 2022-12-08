@@ -1,6 +1,15 @@
 # docker-wsl
 wrapper to allow the host to use docker inside wsl
 
-# usage
-install ubuntu in wsl and docker
-compile and use the compiled binary to talk with docker inside wsl
+## installation
+- install wsl
+- install ubuntu 
+- install docker
+- add linux user to /etc/sudoers for passwordless access 
+- add docker.exe to path
+
+## start service
+- docker start
+
+## user docker
+- docker [command]

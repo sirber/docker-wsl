@@ -12,19 +12,29 @@ func main() {
 	args := []string{"docker"}
 	args = append(args, os.Args[1:]...)
 
-	// Command
-	cmd := exec.Command("wsl", args...)
+	firstArg := os.Args[1]
 
-	// Buffers
-	var out bytes.Buffer
-	var outError bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = &outError
+	switch firstArg {
+	case "start":
+		exec.Command("wsl", "service", "docker", "start")
+		break
 
-	// Execute
-	cmd.Run()
+	default:
+		// Command
+		cmd := exec.Command("wsl", args...)
 
-	// Console oupout
-	fmt.Print(outError.String())
-	fmt.Print(out.String())
+		// Buffers
+		var out bytes.Buffer
+		var outError bytes.Buffer
+		cmd.Stdout = &out
+		cmd.Stderr = &outError
+
+		// Execute
+		cmd.Run()
+
+		// Console oupout
+		fmt.Print(outError.String())
+		fmt.Print(out.String())
+		break
+	}
 }
